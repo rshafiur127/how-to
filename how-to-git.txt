@@ -1,0 +1,32 @@
+### Links that i used to coinfigure in Linux:
+
+# https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux
+
+1. ssh-keygen -t ed25519 -C "your_email@example.com"
+2. eval "$(ssh-agent -s)"
+3. ssh-add ~/.ssh/id_ed25519
+
+# https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?tool=webui
+
+4. GitHub, profile photo, then click Settings.
+5. In the "Access" section of the sidebar, click  SSH and GPG keys.
+6. Click New SSH key or Add SSH key.
+7. In the "Title" field, add a descriptive label for the new key. 
+8. Select the type of key, either authentication or signing. 
+9. In the "Key" field, paste your public key.
+10. Click Add SSH key.
+11. If prompted, confirm access to your account on GitHub.
+
+# https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
+
+12. To test if SSH over the HTTPS port is possible, run this SSH command:
+ssh -T -p 443 git@ssh.github.com
+
+13. Enabling SSH connections over HTTPS
+vi ~/.ssh/config
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git
+14. chmod 644 ~/.ssh/config
+15. ssh -T git@github.com
